@@ -5,26 +5,8 @@ pipeline {
 
 			stage('Build Application') {
 				steps {
-					sh 'mvn clean install'
+					sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=jojavier-cg_poc-cicd-app-2'
 				}
 			}
-			
-			stage('Test') {
-				steps {
-					echo 'Application in Testing Phase…'
-					sh 'mvn -v'
-					sh 'java -version'
-					sh 'mvn test'
-				}
-			}		
-			
-			stage('Deploy to Server') {
-				steps {
-					echo 'Deploying mule project due to the latest code commit…'
-					echo 'Deploying to the configured environment….'
-					sh 'mvn clean package deploy -DmuleDeploy'
-				}
-			}
-		
 	}
 }
