@@ -16,6 +16,8 @@
 		<app.runtime>4.4.0-20211227</app.runtime>
 		<mule.maven.plugin.version>3.5.2</mule.maven.plugin.version>
 		<munit.version>2.3.7</munit.version>
+		<sonar.organization>jojavier-cg</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
 	<build>
