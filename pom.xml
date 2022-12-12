@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.mycompany</groupId>
+	<groupId>58352764-d415-4032-8943-d794cfb602ba</groupId>
 	<artifactId>poc-cicd-app-2</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
@@ -29,6 +29,24 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				<configuration>
+					<armDeployment>
+						<muleVersion>4.4.0</muleVersion>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<target>cg-cds-mulesoft-cluster</target>
+						<targetType>cluster</targetType>
+						<environment>SIT</environment>
+						<businessGroup>cg-cto-int-bg-01</businessGroup>
+						<businessGroupId>58352764-d415-4032-8943-d794cfb602ba</businessGroupId>
+						<properties>
+							<env>sit</env>
+							<secure.key>CRG-S3cureKey@Dev1234567</secure.key>
+						</properties>
+						<connectedAppClientId>4487b627a659446abae9875315d60838</connectedAppClientId>
+						<connectedAppClientSecret>61D599b6f7dF4a37a3b1a05bdd677194</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
+					</armDeployment>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -46,6 +64,13 @@
 			<version>1.2.2</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
+ 		<dependency>
+            <groupId>58352764-d415-4032-8943-d794cfb602ba</groupId>
+            <artifactId>crg-domain</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <classifier>mule-domain</classifier>
+            <scope>provided</scope>
+        </dependency>
 	</dependencies>
 
 	<repositories>
