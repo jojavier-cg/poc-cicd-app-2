@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="poc-cicd-app-2-test-suite.xml" />
+	<munit:test name="poc-cicd-app-2-test-suite-poc-cicd-app-2FlowTest" doc:id="ccf69053-3ca4-4940-a4ac-42d4be2b3aa2" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to poc-cicd-app-2Flow" doc:id="31469951-30e2-46ee-8f47-d81f32d13b33" name="poc-cicd-app-2Flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verify call" doc:id="c5103dc7-39d3-428b-b5e7-1890484fd968" processor="logger" atLeast="#[1]">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Logger" attributeName="doc:name" />
+					<munit-tools:with-attribute whereValue="16bbdc38-2681-4ed6-b3e8-a6b8b395e41e" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+
+</mule>

@@ -15,6 +15,7 @@
 
 		<app.runtime>4.4.0-20211227</app.runtime>
 		<mule.maven.plugin.version>3.5.2</mule.maven.plugin.version>
+		<munit.version>2.3.7</munit.version>
 	</properties>
 
 	<build>
@@ -48,6 +49,29 @@
 					</armDeployment>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>com.mulesoft.munit.tools</groupId>
+				<artifactId>munit-maven-plugin</artifactId>
+				<version>${munit.version}</version>
+				<executions>
+					<execution>
+						<id>test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>test</goal>
+							<goal>coverage-report</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<coverage>
+						<runCoverage>true</runCoverage>
+						<formats>
+							<format>html</format>
+						</formats>
+					</coverage>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -64,13 +88,33 @@
 			<version>1.2.2</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
- 		<dependency>
-            <groupId>58352764-d415-4032-8943-d794cfb602ba</groupId>
-            <artifactId>crg-domain</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <classifier>mule-domain</classifier>
-            <scope>provided</scope>
-        </dependency>
+		<dependency>
+			<groupId>58352764-d415-4032-8943-d794cfb602ba</groupId>
+			<artifactId>crg-domain</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<classifier>mule-domain</classifier>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-runner</artifactId>
+			<version>2.3.7</version>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.munit</groupId>
+			<artifactId>munit-tools</artifactId>
+			<version>2.3.7</version>
+			<classifier>mule-plugin</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mule.weave</groupId>
+			<artifactId>assertions</artifactId>
+			<version>1.0.2</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<repositories>
